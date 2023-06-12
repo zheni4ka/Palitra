@@ -1,0 +1,46 @@
+﻿<Window x:Class="WpfApp2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="75"/>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="0.5*"/>
+        </Grid.ColumnDefinitions>
+        <Border Height="150" Margin="0,6,0,278" Grid.Column="3">
+            <Border.Background>
+                <SolidColorBrush Color="{Binding Palitra, FallbackValue=Black}"/>
+            </Border.Background>
+        </Border>
+        <StackPanel Grid.Column="0">
+            <Label Content="Alpha" FontSize="20"/>
+            <Label Content="Red" FontSize="20"/>
+            <Label Content="Green" FontSize="20"/>
+            <Label Content="Blue" FontSize="20"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <Label  FontSize="20" Name = "Alpha" Margin="0" Content="{Binding ElementName=AlphaSlider, Path=Value}"/>
+            <Label  FontSize="20" Name = "Red"  Margin="0" Content="{Binding ElementName=RedSlider, Path=Value}"/>
+            <Label  FontSize="20" Name = "Green" Margin="0" Content="{Binding ElementName=GreenSlider, Path=Value}"/>
+            <Label  FontSize="20" Name = "Blue" Margin="0" Content="{Binding ElementName=BlueSlider, Path=Value}"/>
+            
+            
+        </StackPanel>
+        <StackPanel Grid.Column="2">
+            <Slider Height="25" Margin="7" Name="AlphaSlider" Maximum="255" Value="{Binding Path=alpha}"/>
+            <Slider Height="25" Margin="7" Name="RedSlider" Maximum="255" Value="{Binding Path=red}"/>
+            <Slider Height="25" Margin="7" Name="GreenSlider" Maximum="255" Value="{Binding Path=green}"/>
+            <Slider Height="25" Margin="7" Name="BlueSlider" Maximum="255" Value="{Binding Path=blue}"/>
+            <ListBox Height="250" MouseDoubleClick="ColorListBox_MouseDoubleClick" Margin="20" BorderThickness="1" BorderBrush="Black" Name = "ColorListBox"/>
+        </StackPanel>
+        <Button Height="50" Margin="10, 10, 10, 30" Content="Add" FontSize="24" Grid.ColumnSpan ="2" Click="Button_Click"/>
+
+    </Grid>
+</Window>
